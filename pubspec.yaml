@@ -1,5 +1,5 @@
-name: people_in_map
-description: "A new Flutter project."
+name: people_in_list_map
+description: "Flutter project of Mobile Developer Programming Test"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -21,6 +21,74 @@ version: 1.0.0+1
 environment:
   sdk: '>=3.2.5 <4.0.0'
 
+scripts:
+  # run is a default script. To use it, simply type
+  # in the command line: "rps" - that's all!
+  run: "flutter run -t lib/main.dart"
+  # you can define more commands like this: "rps gen"
+  gen: "flutter pub run build_runner watch --delete-conflicting-outputs"
+  genoss: "flutter pub run flutter_oss_licenses:generate.dart"
+  # and even nest them!
+  buildoutput:
+    # You can use hooks to! (and even nest them!)
+    $before: flutter pub get
+    $after: echo "Build done!"
+    android:
+      # rps build android apk
+      apk: 
+        $before: echo "Building android apk..."
+        $script: "flutter build --release apk --flavor production"
+      # rps build android appbundle
+      appbundle: "flutter build --release appbundle --flavor production"
+      # and so on...
+  # too long command? no problem! define alias using reference syntax!
+  bab: $buildoutput android appbundle
+  # as simple as typing "rps baa"
+  baa: $buildoutput android apk
+  # some commands may vary from platform to platform
+  # but that's not a problem
+  clear:
+    # use the $script key to define platform specific scripts
+    $script:
+      # define the default script
+      $default: rm -rf ./app/cache
+      # And different script for the windows platform.
+      $windows: rd /s /q app\cache
+      # now "rps clear" will work on any platform!
+
+  dev: flutter run # -d <device_id>
+  dev-fresh: flutter run --no-fast-start # -d <device_id>
+  profile: flutter run --profile
+  devices: flutter devices
+  install: flutter pub get
+  build: flutter pub run build_runner build --delete-conflicting-outputs
+  watch: flutter pub run build_runner watch --delete-conflicting-outputs
+  uninstall: adb shell && pm uninstall org.tether.tether # (sometimes doesn't uninstall when debugging?)
+  format: flutter dartfmt --line-length=120 .
+
+  build-release-ios: flutter build ipa  --release # open under xcworkspace, not xcodeproj
+  build-release-macos: flutter pub run build_runner build --delete-conflicting-outputs && flutter build macos --release
+  build-release-android: flutter pub run build_runner build --delete-conflicting-outputs && flutter build apk --release
+
+  # mobile development commands
+  setup-ios: pod install && flutter precache --ios
+  clean-ios: xcrun simctl delete unavailable
+  list-ios: xcrun simctl list devices
+  boot-ios: xcrun simctl boot #<device_id>
+  list-android: emulator -list-avds
+  boot-android: emulator -avd #<device_id>
+  inspect-android: adb shell && run-as org.tether.tether # cache inspection
+  log-android: adb logcat ActivityManager:I flutter:I *:S
+
+  # configuration and troubleshooting
+  init-repo: git submodule update --init --recursive
+  reset-xcode: defaults delete com.apple.dt.Xcode
+  dev-tools: flutter pub global run devtools
+  cache-clean: pub cache repair && flutter pub cache repair
+  upgrade-deps: flutter pub upgrade --major-versions
+  init-platform-dirs: flutter create --org org.tether.tether
+  enable-desktop: flutter config --enable-macos-desktop --enable-linux-desktop # --no-enable-<type>-desktop
+
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
 # consider running `flutter pub upgrade --major-versions`. Alternatively,
@@ -31,6 +99,13 @@ dependencies:
   flutter:
     sdk: flutter
 
+  provider: ^6.1.1
+  shared_preferences: ^2.2.2
+  page_transition: ^2.1.0
+  auto_size_text: ^3.0.0
+  delayed_display: ^2.0.0
+  vs_scrollbar: ^1.0.0
+  no_context_navigation: ^3.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -46,9 +121,16 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner: ^2.4.8
+  change_app_package_name: ^1.1.0
+  launcher_name: ^1.0.2
+  build_web_compilers: ^4.0.9
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+launcher_name:
+  default: "People In ListMap"
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -60,8 +142,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  #   - assets/
+  #   - assets/i18n/
+  #   - assets/images/
+  #   - assets/lotties/
+  #   - assets/sounds/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
