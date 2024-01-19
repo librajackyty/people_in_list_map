@@ -1,3 +1,6 @@
+import 'package:welltested_annotation/welltested_annotation.dart';
+
+@Welltested()
 class Person {
   String id;
   Name name;

@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:welltested_annotation/welltested_annotation.dart';
 
+@Welltested()
 class MySharedPreferences {
   // Function to save data with an expiration date to SharedPreferences
   Future<bool> saveData(String key, String data) async {
