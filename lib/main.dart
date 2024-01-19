@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:page_transition/page_transition.dart';
 
+import 'screens/home.dart';
 import 'screens/landing.dart';
 import 'utils/constants.dart' as constants;
 
@@ -29,13 +30,10 @@ class MyApp extends StatelessWidget {
             return PageTransition(
                 child: const LandingPage(title: 'Landing'),
                 type: PageTransitionType.fade);
-          // case constants.pageRouteHome:
-          //   return PageTransition(
-          //       child: HomePage(
-          //         title: 'Home',
-          //         arg: settings.arguments as ReminderScreenArg?,
-          //       ),
-          //       type: PageTransitionType.fade);
+          case constants.pageRouteHome:
+            return PageTransition(
+                child: const HomePage(title: 'Home'),
+                type: PageTransitionType.fade);
         }
         return null;
       },

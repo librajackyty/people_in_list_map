@@ -3,30 +3,27 @@ import 'package:people_in_list_map/widgets/custom_button_normal.dart';
 
 // import '../utils/assetslink.dart';
 import '../utils/constants.dart';
-import '../widgets/custom_text_title.dart';
+import '../widgets/custom_text_normal.dart';
 
-class LandingPage extends StatefulWidget {
-  const LandingPage({super.key, required this.title});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<LandingPage> createState() => _LandingPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _LandingPageState extends State<LandingPage> {
+class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Future.delayed(const Duration(seconds: 2), goHome);
-    });
     super.initState();
   }
 
-  void goHome() {
+  void goToDetail() {
     if (context.mounted) {
-      Navigator.pushNamedAndRemoveUntil(
-          context, pageRouteHome, (route) => false);
+      // Navigator.pushNamedAndRemoveUntil(
+      //     context, pageRouteHome, (route) => false);
     }
   }
 
@@ -40,7 +37,8 @@ class _LandingPageState extends State<LandingPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                // CusTitleText("People In ListMap"),
+                CusNText("Home Page"),
+                CusNButton("Show detail", () {})
               ],
             ),
           ),
