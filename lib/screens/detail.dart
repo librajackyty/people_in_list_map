@@ -83,9 +83,9 @@ class _DetailPageState extends State<DetailPage> {
         key: _scaffoldKey,
         body: CusMap(CameraPosition(target: getLatLng(), zoom: 12), {
           Marker(
-            markerId: getMakerID(),
-            position: getLatLng(),
-          )
+              markerId: getMakerID(),
+              position: getLatLng(),
+              infoWindow: InfoWindow(title: _person.name.full()))
         }),
         floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
         floatingActionButton: FloatingActionButton(
