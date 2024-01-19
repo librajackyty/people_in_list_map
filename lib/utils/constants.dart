@@ -73,11 +73,11 @@ const double textSExSmallSize = 14;
 const double textSBtnSize = 22;
 const double textSBtnSmallSize = 14;
 
-final Color elementActiveColor = Colors.green[900]!;
+final Color elementActiveColor = Colors.pink[900]!;
 const Color elementNotActiveColor = Colors.white;
 const Color elementActiveTxtColor = Colors.white;
 const Color elementNotActiveTxtColor = Colors.black;
-final Color scrollBarColor = Colors.green.shade500;
+final Color scrollBarColor = Colors.pink.shade500;
 final Color errorColor = Colors.red[900]!;
 const Color dividerColor = Colors.black;
 
@@ -87,12 +87,12 @@ const double buttonBorderWidthReadOnly = 1;
 const double buttonHeight = 60;
 const double buttonWidthSmall = 100;
 const double buttonHeightSmall = 40;
-final Color buttonBorderColor = Colors.green[900]!;
+final Color buttonBorderColor = Colors.pink[900]!;
 final Color buttonBorderColor2 = Colors.red[900]!;
-const Color buttonForegroundColor = Colors.green;
+const Color buttonForegroundColor = Colors.pink;
 const Color buttonForegroundColor2 = Colors.red;
 const Color buttonReadOnlyColor = Colors.white;
 const Color buttonReadOnlyForegroundColor = Colors.black;
 
 // card ui
-final Color cardBorderColor = Colors.green[900]!;
+final Color cardBorderColor = Colors.pink[900]!;
