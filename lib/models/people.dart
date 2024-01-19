@@ -31,8 +31,8 @@ class People {
 }
 
 class Location {
-  double latitude;
-  double longitude;
+  double? latitude;
+  double? longitude;
 
   Location({
     required this.latitude,
@@ -40,8 +40,8 @@ class Location {
   });
 
   factory Location.fromJson(Map<String, dynamic> json) => Location(
-        latitude: json["latitude"]?.toDouble(),
-        longitude: json["longitude"]?.toDouble(),
+        latitude: json["latitude"],
+        longitude: json["longitude"],
       );
 
   Map<String, dynamic> toJson() => {

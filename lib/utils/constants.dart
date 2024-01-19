@@ -94,29 +94,3 @@ const Color buttonReadOnlyForegroundColor = Colors.black;
 
 // card ui
 final Color cardBorderColor = Colors.green[900]!;
-
-final List filterIconData = [
-  Icons.calendar_month,
-  Icons.date_range,
-  Icons.event_busy,
-  Icons.today,
-  Icons.today,
-  Icons.today,
-  Icons.today,
-  Icons.today,
-  Icons.today,
-  Icons.today
-];
-
-final List filterKeys = [
-  "filter_all",
-  "filter_repeat_all",
-  "filter_repeat_no",
-  "filter_repeat_mon",
-  "filter_repeat_tue",
-  "filter_repeat_wed",
-  "filter_repeat_thu",
-  "filter_repeat_fri",
-  "filter_repeat_sat",
-  "filter_repeat_sun"
-];
