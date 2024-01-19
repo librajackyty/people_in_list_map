@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
+// Page route
 const String pageRouteHome = "/home";
 const String pageRouteLanding = "/landing";
+const String pageRouteDetail = "/detail";
 
+// Storage data key
+const String storeKeyPersonList = "people_list";
+
+// UI params
 const double safeAreaPaddingAll = 20.0;
 const double safeAreaPaddingAllWthLv = 2.0;
 
@@ -18,12 +24,8 @@ const double reminderCardBottomMargin = 16.0;
 const double cardsBorderRadius = 20.0;
 const double cardsElevation = 6.0;
 const double listviewPaddingAll = 18.0;
-const double selectWeekDaysBorderRadius = 30.0;
-const double selectWeekDaysPadding = 10.0;
-const int progressBarDelayShowTime = 500;
-const int askExpiredDelShowTime = 1000;
-const int tutorialShowTime = progressBarDelayShowTime + 500;
-const int safetyOverlayRmTime = 1200;
+const double circleImgBorderRadius = 30.0;
+const double circleImgBorderWH = 50.0;
 
 const int pageHeaderDelayShowTime = 200;
 const int pageContentDelayShowTime = 200;
@@ -71,11 +73,11 @@ const double textSExSmallSize = 14;
 const double textSBtnSize = 22;
 const double textSBtnSmallSize = 14;
 
-final Color elementActiveColor = Colors.green[900]!;
+final Color elementActiveColor = Colors.pink[900]!;
 const Color elementNotActiveColor = Colors.white;
 const Color elementActiveTxtColor = Colors.white;
 const Color elementNotActiveTxtColor = Colors.black;
-final Color scrollBarColor = Colors.green.shade500;
+final Color scrollBarColor = Colors.pink.shade500;
 final Color errorColor = Colors.red[900]!;
 const Color dividerColor = Colors.black;
 
@@ -85,38 +87,12 @@ const double buttonBorderWidthReadOnly = 1;
 const double buttonHeight = 60;
 const double buttonWidthSmall = 100;
 const double buttonHeightSmall = 40;
-final Color buttonBorderColor = Colors.green[900]!;
+final Color buttonBorderColor = Colors.pink[900]!;
 final Color buttonBorderColor2 = Colors.red[900]!;
-const Color buttonForegroundColor = Colors.green;
+const Color buttonForegroundColor = Colors.pink;
 const Color buttonForegroundColor2 = Colors.red;
 const Color buttonReadOnlyColor = Colors.white;
 const Color buttonReadOnlyForegroundColor = Colors.black;
 
 // card ui
-final Color cardBorderColor = Colors.green[900]!;
-
-final List filterIconData = [
-  Icons.calendar_month,
-  Icons.date_range,
-  Icons.event_busy,
-  Icons.today,
-  Icons.today,
-  Icons.today,
-  Icons.today,
-  Icons.today,
-  Icons.today,
-  Icons.today
-];
-
-final List filterKeys = [
-  "filter_all",
-  "filter_repeat_all",
-  "filter_repeat_no",
-  "filter_repeat_mon",
-  "filter_repeat_tue",
-  "filter_repeat_wed",
-  "filter_repeat_thu",
-  "filter_repeat_fri",
-  "filter_repeat_sat",
-  "filter_repeat_sun"
-];
+final Color cardBorderColor = Colors.pink[900]!;

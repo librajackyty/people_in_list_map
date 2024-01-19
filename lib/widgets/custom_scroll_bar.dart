@@ -28,20 +28,11 @@ class _CusScrollbarState extends State<CusScrollbar> {
   Widget build(BuildContext context) {
     return VsScrollbar(
         controller: widget.scrollController,
-        // showTrackOnHover: true, // default false
         isAlwaysShown: widget.isAlwaysShown, // default false
-        // scrollbarFadeDuration: Duration(
-        //     milliseconds:
-        //         500), // default : Duration(milliseconds: 300)
-        // scrollbarTimeToFade: Duration(
-        //     milliseconds:
-        //         800), // default : Duration(milliseconds: 600)
         style: VsScrollbarStyle(
-          hoverThickness: widget.thickness + 2, // default 12.0
-          radius: Radius.circular(
-              cardsBorderRadius), // default Radius.circular(8.0)
-          thickness: widget.thickness, // [ default 8.0 ]
-          color: scrollBarColor, // default ColorScheme Theme
+          hoverThickness: widget.thickness + 2,
+          radius: const Radius.circular(cardsBorderRadius),
+          thickness: widget.thickness,
         ),
         child: widget.child);
   }

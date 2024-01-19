@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:people_in_list_map/widgets/custom_button_normal.dart';
-
-// import '../utils/assetslink.dart';
 import '../utils/constants.dart';
-import '../widgets/custom_text_normal.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key, required this.title});
@@ -17,9 +13,9 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   void initState() {
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   Future.delayed(const Duration(seconds: 2), goHome);
-    // });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Future.delayed(const Duration(seconds: 2), goHome);
+    });
     super.initState();
   }
 
@@ -37,15 +33,7 @@ class _LandingPageState extends State<LandingPage> {
         child: Padding(
           padding: const EdgeInsets.all(safeAreaPaddingAll),
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                CusNText("Landing Page"),
-                CusNButton("Home", () {
-                  
-                })
-              ],
-            ),
+            child: Container(),
           ),
         ),
       ),
