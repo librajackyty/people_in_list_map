@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:people_in_list_map/widgets/custom_button_normal.dart';
-
-// import '../utils/assetslink.dart';
 import '../utils/constants.dart';
-import '../widgets/custom_text_title.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key, required this.title});
@@ -37,12 +33,7 @@ class _LandingPageState extends State<LandingPage> {
         child: Padding(
           padding: const EdgeInsets.all(safeAreaPaddingAll),
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // CusTitleText("People In ListMap"),
-              ],
-            ),
+            child: Container(),
           ),
         ),
       ),

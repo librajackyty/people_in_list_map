@@ -1,13 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:people_in_list_map/models/people.dart';
-import 'package:people_in_list_map/services/peoplelist_service.dart';
+import 'package:people_in_list_map/models/person.dart';
+import 'package:people_in_list_map/services/personlist_service.dart';
 import 'package:people_in_list_map/widgets/custom_button_normal.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 // import '../utils/assetslink.dart';
+import '../models/screen_arg.dart';
 import '../utils/constants.dart';
 import '../widgets/custom_card_container.dart';
+import '../widgets/custom_card_itm_person.dart';
 import '../widgets/custom_scroll_bar.dart';
 import '../widgets/custom_text_normal.dart';
 
@@ -21,32 +23,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<People>? peoplelist;
+  List<Person>? peoplelist;
 
   @override
   void initState() {
     super.initState();
   }
 
-  void goToDetail() {
+  void goToDetail(Person people) {
     if (context.mounted) {
-      // Navigator.pushNamedAndRemoveUntil(
-      //     context, pageRouteHome, (route) => false);
+      Navigator.pushNamed(context, pageRouteDetail,
+          arguments: ScreenArg(people));
     }
   }
 
-  Future<List<People>?> loadPeopleList() async {
-    final peopleListService = PeopleListService();
-    peoplelist = await peopleListService.getPeopleList();
-    debugPrint("HomePage::loadPeopleList list fetched");
+  Future<List<Person>?> loadPersonList() async {
+    final peopleListService = PersonListService();
+    peoplelist = await peopleListService.getPersonList();
+    debugPrint("HomePage::loadPersonList list fetched");
     return peoplelist;
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: loadPeopleList(),
-        builder: (BuildContext context, AsyncSnapshot<List<People>?> snapshot) {
+        future: loadPersonList(),
+        builder: (BuildContext context, AsyncSnapshot<List<Person>?> snapshot) {
           Widget child;
           if (snapshot.connectionState == ConnectionState.waiting) {
             debugPrint("HomePage::FutureBuilder ConnectionState.waiting");
@@ -58,7 +60,7 @@ class _HomePageState extends State<HomePage> {
             );
           } else if (snapshot.connectionState == ConnectionState.done) {
             debugPrint("HomePage::FutureBuilder ConnectionState.done");
-            List<People>? pl = snapshot.data;
+            List<Person>? pl = snapshot.data;
             child = Center(
               key: const ValueKey(1),
               child: CusScrollbar(
@@ -73,38 +75,41 @@ class _HomePageState extends State<HomePage> {
                                       BorderRadius.circular(cardsBorderRadius),
                                   onTap: () {
                                     debugPrint("Card Clicked");
+                                    goToDetail(person);
                                   },
-                                  child: Container(
-                                      padding:
-                                          const EdgeInsets.all(elementMPadding),
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(
-                                                cardsBorderRadius),
-                                            topRight: Radius.circular(
-                                                cardsBorderRadius)),
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          ClipOval(
-                                              child: CachedNetworkImage(
-                                                  width: circleImgBorderWH,
-                                                  height: circleImgBorderWH,
-                                                  fit: BoxFit.cover,
-                                                  placeholder: (context, url) =>
-                                                      const Icon(Icons
-                                                          .account_circle_outlined),
-                                                  errorWidget: (context, url,
-                                                          error) =>
-                                                      const Icon(
-                                                          Icons.account_circle),
-                                                  imageUrl: person.picture)),
-                                          const SizedBox(
-                                              width: elementMPadding),
-                                          CusNText(person.name.full())
-                                        ],
-                                      ))));
+                                  child: CusCardItmPerson(person)
+                                  // Container(
+                                  //     padding:
+                                  //         const EdgeInsets.all(elementMPadding),
+                                  //     decoration: const BoxDecoration(
+                                  //       color: Colors.white,
+                                  //       borderRadius: BorderRadius.only(
+                                  //           topLeft: Radius.circular(
+                                  //               cardsBorderRadius),
+                                  //           topRight: Radius.circular(
+                                  //               cardsBorderRadius)),
+                                  //     ),
+                                  //     child: Row(
+                                  //       children: [
+                                  //         ClipOval(
+                                  //             child: CachedNetworkImage(
+                                  //                 width: circleImgBorderWH,
+                                  //                 height: circleImgBorderWH,
+                                  //                 fit: BoxFit.cover,
+                                  //                 placeholder: (context, url) =>
+                                  //                     const Icon(Icons
+                                  //                         .account_circle_outlined),
+                                  //                 errorWidget: (context, url,
+                                  //                         error) =>
+                                  //                     const Icon(
+                                  //                         Icons.account_circle),
+                                  //                 imageUrl: person.picture)),
+                                  //         const SizedBox(
+                                  //             width: elementMPadding),
+                                  //         CusNText(person.name.full())
+                                  //       ],
+                                  //     ))
+                                  ));
                         }
                         return Container();
                       })),

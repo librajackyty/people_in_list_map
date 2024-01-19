@@ -4,28 +4,28 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
-import '../../models/people.dart';
+import '../../models/person.dart';
 import '../../utils/constants_api.dart';
 import 'package:http/http.dart' as http;
 
-class PeopleListApi {
+class PersonListApi {
   Map<String, String> requestHeaders = {
     'Content-type': 'application/json',
     'Accept': 'application/json',
-    'Authorization': 'Bearer $peopleListPubKey'
+    'Authorization': 'Bearer $personListPubKey'
   };
 
-  Future<List<People>?> getPeople(http.Client client) async {
+  Future<List<Person>?> getPerson(http.Client client) async {
     try {
-      debugPrint("PeopleListApi:start getPeople");
-      var response = await client.get(Uri.parse(apiStr(peopleList)),
+      debugPrint("PersonListApi:start getPerson");
+      var response = await client.get(Uri.parse(apiStr(personList)),
           headers: requestHeaders);
       if (response.statusCode == 200) {
-        debugPrint('PeopleListApi::Http Get success: ${response.body}');
-        return List<People>.from(
-            json.decode(response.body).map((v) => People.fromJson(v)));
+        debugPrint('PersonListApi::Http Get success: ${response.body}');
+        return List<Person>.from(
+            json.decode(response.body).map((v) => Person.fromJson(v)));
       }
-      debugPrint('PeopleListApi::Http Get fail: ${response.statusCode}');
+      debugPrint('PersonListApi::Http Get fail: ${response.statusCode}');
       return null;
     } on TimeoutException catch (e) {
       debugPrint('Timeout Error: $e');

@@ -3,11 +3,11 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
-import 'package:people_in_list_map/models/people.dart';
-import 'package:people_in_list_map/provider/api/peoplelist.dart';
+import 'package:people_in_list_map/models/person.dart';
+import 'package:people_in_list_map/provider/api/personlist.dart';
 
 void main() {
-  group('peoplelist', () {
+  group('api people list', () {
     test('returns people list when http response is successful (Status 200)',
         () async {
       // Mock the API call to return a json response with http status 200 Ok //
@@ -27,7 +27,7 @@ void main() {
       // Check whether getNumberTrivia function returns
       // number trivia which will be a String
       expect(
-          await PeopleListApi().getPeople(mockHTTPClient), isA<List<People>>());
+          await PersonListApi().getPerson(mockHTTPClient), isA<List<Person>>());
     });
 
     test('return null when http response is unsuccessful (Status not 200)',
@@ -38,7 +38,7 @@ void main() {
         final response = {};
         return Response(jsonEncode(response), 404);
       });
-      expect(await PeopleListApi().getPeople(mockHTTPClient), isNull);
+      expect(await PersonListApi().getPerson(mockHTTPClient), isNull);
     });
   });
 }

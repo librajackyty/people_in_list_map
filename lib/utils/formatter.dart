@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../models/people.dart';
+import '../models/person.dart';
 
-People peopleFromJsonStr(String str) => People.fromJson(json.decode(str));
-String peopleToJson(People data) => json.encode(data.toJson());
+Person personFromJsonStr(String str) => Person.fromJson(json.decode(str));
+String personToJson(Person data) => json.encode(data.toJson());

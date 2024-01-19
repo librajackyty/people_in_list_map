@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 // Page route
 const String pageRouteHome = "/home";
 const String pageRouteLanding = "/landing";
+const String pageRouteDetail = "/detail";
 
 // Storage data key
-const String storeKeyPeopleList = "people_list";
+const String storeKeyPersonList = "people_list";
 
 // UI params
 const double safeAreaPaddingAll = 20.0;

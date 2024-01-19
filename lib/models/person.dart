@@ -1,11 +1,11 @@
-class People {
+class Person {
   String id;
   Name name;
   String email;
   String picture;
   Location location;
 
-  People({
+  Person({
     required this.id,
     required this.name,
     required this.email,
@@ -13,7 +13,7 @@ class People {
     required this.location,
   });
 
-  factory People.fromJson(Map<String, dynamic> json) => People(
+  factory Person.fromJson(Map<String, dynamic> json) => Person(
         id: json["_id"],
         name: Name.fromJson(json["name"]),
         email: json["email"],
