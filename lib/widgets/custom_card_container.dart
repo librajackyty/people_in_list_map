@@ -12,8 +12,8 @@ class CusCardContainer extends StatelessWidget {
     return Card(
         margin: const EdgeInsets.only(bottom: reminderCardBottomMargin),
         shape: RoundedRectangleBorder(
-          side: BorderSide(
-            color: Colors.greenAccent,
+          side: const BorderSide(
+            color: Colors.pink,
           ),
           borderRadius: BorderRadius.circular(cardsBorderRadius),
         ),

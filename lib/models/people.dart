@@ -68,4 +68,6 @@ class Name {
         "last": last,
         "first": first,
       };
+
+  String full() => "$first $last";
 }

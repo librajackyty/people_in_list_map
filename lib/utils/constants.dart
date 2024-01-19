@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
+// Page route
 const String pageRouteHome = "/home";
 const String pageRouteLanding = "/landing";
 
+// Storage data key
+const String storeKeyPeopleList = "people_list";
+
+// UI params
 const double safeAreaPaddingAll = 20.0;
 const double safeAreaPaddingAllWthLv = 2.0;
 
@@ -18,12 +23,8 @@ const double reminderCardBottomMargin = 16.0;
 const double cardsBorderRadius = 20.0;
 const double cardsElevation = 6.0;
 const double listviewPaddingAll = 18.0;
-const double selectWeekDaysBorderRadius = 30.0;
-const double selectWeekDaysPadding = 10.0;
-const int progressBarDelayShowTime = 500;
-const int askExpiredDelShowTime = 1000;
-const int tutorialShowTime = progressBarDelayShowTime + 500;
-const int safetyOverlayRmTime = 1200;
+const double circleImgBorderRadius = 30.0;
+const double circleImgBorderWH = 50.0;
 
 const int pageHeaderDelayShowTime = 200;
 const int pageContentDelayShowTime = 200;
